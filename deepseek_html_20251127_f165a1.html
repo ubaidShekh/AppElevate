@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppElevate - Software Development Company</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0f172a;
+            --accent: #06b6d4;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --white: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--gray);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .btn-whatsapp:hover {
+            background: #128C7E;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .logo-icon {
+            width: 200px;
+            /* Adjust size */
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: var(--white);
+            padding: 10rem 0 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwMCAxMDAwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMyNTYzZWIiLz48cGF0aCBkPSJNLTExMi41IDI3NS41Qy0xMTIuNSAxOTcuNzY1IC00OS43MzUgMTM1IDI4IDEzNUg5NzJDMTA0OS43NCAxMzUgMTExMi41IDE5Ny43NjUgMTExMi41IDI3NS41Vjc3NC41QzExMTIuNSA4NTIuMjM1IDEwNDkuNzQgOTE1IDk3MiA5MTVIMjhDLTQ5LjczNSA5MTUgLTExMi41IDg1Mi4yMzUgLTExMi41IDc3NC41VjI3NS41WiIgZmlsbD0iIzBmMTcyYSIvPjwvc3ZnPg==');
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+
+        /* Highlights Section */
+        .highlights {
+            background: var(--light);
+        }
+
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .highlight-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .highlight-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            height: 100%;
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .service-card ul {
+            margin: 1rem 0;
+        }
+
+        .service-card li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-card li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .offer {
+            background: #f0f9ff;
+            padding: 1rem;
+            border-radius: var(--radius);
+            margin-top: 1rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background: var(--light);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            text-align: center;
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-card.featured {
+            transform: scale(1.05);
+            border: 2px solid var(--primary);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+
+        .pricing-card ul {
+            margin: 1.5rem 0;
+            flex-grow: 1;
+        }
+
+        .pricing-card li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            text-align: left;
+        }
+
+        .pricing-card li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .special-offers {
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .offer-card {
+            padding: 2rem;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-image {
+            height: 200px;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-weight: 600;
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tags span {
+            background: var(--light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: var(--light);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            height: 100%;
+        }
+
+        .stars {
+            color: #fbbf24;
+            margin-bottom: 1rem;
+        }
+
+        .client {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .client strong {
+            color: var(--secondary);
+        }
+
+        .client span {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* About Section */
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .mission,
+        .vision {
+            padding: 2rem;
+            background: var(--light);
+            border-radius: var(--radius);
+        }
+
+        .founder-section {
+            margin-bottom: 3rem;
+        }
+
+        .founder-profile {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+
+        .founder-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+        }
+
+        .founder-info {
+            flex: 1;
+        }
+
+        .title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .expertise-item {
+            padding: 1.5rem;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--secondary);
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-method {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+        }
+
+        .contact-method .icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .social-links {
+            margin-top: 2rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--light);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3,
+        .footer-section h4 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Page Sections */
+        .page-section {
+            padding: 8rem 0 5rem;
+        }
+
+        .page-hero {
+            background: var(--light);
+            text-align: center;
+        }
+
+        .page-intro {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero {
+                padding: 8rem 0 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .founder-profile {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#home" class="logo">
+                    <div class="logo-icon"><img
+                            src="C:\Users\Ubaid\Downloads\ChatGPT Image Jan 5, 2026, 02_22_24 AM.png"
+                            alt="AppElevate Logo" /></div>
+
+                </a>
+                <div class="nav-links" id="navLinks">
+                    <a href="#home">Home</a>
+                    <a href="#services">Services</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#about">About</a>
+                    <a href="#testimonials">Testimonials</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="mobile-menu" id="mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Transform Your Ideas Into Digital Reality</h1>
+                <p>Modern software solutions that drive growth, efficiency, and innovation for your business</p>
+                <a href="#contact" class="btn btn-primary">Get Free Consultation</a>
+
+                <div class="trust-badges">
+                    <div class="badge">
+                        <i class="fas fa-clock"></i>
+                        <span>Fast Delivery</span>
+                    </div>
+                    <div class="badge">
+                        <i class="fas fa-indian-rupee-sign"></i>
+                        <span>Affordable Pricing</span>
+                    </div>
+                    <div class="badge">
+                        <i class="fas fa-palette"></i>
+                        <span>Modern UI/UX</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section class="highlights">
+        <div class="container">
+            <div class="highlight-grid">
+                <div class="highlight-card card">
+                    <div class="highlight-icon">⚡</div>
+                    <h3>Fast Delivery</h3>
+                    <p>Prototype in days, not weeks with our agile development approach</p>
+                </div>
+                <div class="highlight-card card">
+                    <div class="highlight-icon">💰</div>
+                    <h3>Affordable</h3>
+                    <p>Premium quality at startup-friendly prices with flexible payment options</p>
+                </div>
+                <div class="highlight-card card">
+                    <div class="highlight-icon">🎨</div>
+                    <h3>Modern UI</h3>
+                    <p>Beautiful, intuitive interfaces that users love and engage with</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p class="page-intro">Comprehensive software solutions tailored to your business needs</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Mobile App Development -->
+                <div class="service-card card">
+                    <div class="service-icon">📱</div>
+                    <h3>Mobile App Development</h3>
+                    <p>Cross-platform and native apps that deliver exceptional user experiences</p>
+                    <ul>
+                        <li>React Native for iOS & Android</li>
+                        <li>Native Android (Java/Kotlin)</li>
+                        <li>Native iOS (Swift)</li>
+                        <li>App Store deployment</li>
+                    </ul>
+                    <div class="offer">
+                        <strong>Special Offer:</strong> 3 small tasks free for new clients
+                    </div>
+                </div>
+
+                <!-- Web Development -->
+                <div class="service-card card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Web Development</h3>
+                    <p>Responsive, fast, and scalable websites that convert visitors to customers</p>
+                    <ul>
+                        <li>Full-stack web applications</li>
+                        <li>Business websites & portfolios</li>
+                        <li>Custom dashboards & admin panels</li>
+                        <li>E-commerce solutions</li>
+                    </ul>
+                </div>
+
+                <!-- AI & Automation -->
+                <div class="service-card card">
+                    <div class="service-icon">🤖</div>
+                    <h3>AI & Automation</h3>
+                    <p>Intelligent solutions that automate tasks and enhance decision-making</p>
+                    <ul>
+                        <li>AI chatbots & virtual assistants</li>
+                        <li>Voice-controlled applications</li>
+                        <li>Business process automation</li>
+                        <li>Machine learning integration</li>
+                    </ul>
+                </div>
+
+                <!-- IoT & Smart Systems -->
+                <div class="service-card card">
+                    <div class="service-icon">🏠</div>
+                    <h3>IoT & Smart Home Systems</h3>
+                    <p>Connect physical devices to digital platforms for smart automation</p>
+                    <ul>
+                        <li>Home & office automation</li>
+                        <li>ESP8266/ESP32 development</li>
+                        <li>Firebase IoT integration</li>
+                        <li>Real-time monitoring systems</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Pricing</h2>
+                <p class="page-intro">Choose the plan that fits your budget and requirements</p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Starter Plan -->
+                <div class="pricing-card card">
+                    <h3>Starter</h3>
+                    <div class="price">₹9,999 – ₹19,999</div>
+                    <p>Perfect for small projects and MVPs</p>
+                    <ul>
+                        <li>Single landing page</li>
+                        <li>Simple app prototype</li>
+                        <li>Basic bug fixes</li>
+                        <li>1-2 week delivery</li>
+                        <li>15 days support</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary">Choose Starter</a>
+                </div>
+
+                <!-- Business Plan -->
+                <div class="pricing-card card featured">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3>Business</h3>
+                    <div class="price">₹25,000 – ₹50,000</div>
+                    <p>Ideal for growing businesses</p>
+                    <ul>
+                        <li>Complete app or website</li>
+                        <li>API integration</li>
+                        <li>Basic dashboard</li>
+                        <li>3-5 week delivery</li>
+                        <li>1 month support</li>
+                        <li>SEO optimization</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Choose Business</a>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="pricing-card card">
+                    <h3>Premium</h3>
+                    <div class="price">₹75,000 – ₹1,50,000</div>
+                    <p>Enterprise-grade solutions</p>
+                    <ul>
+                        <li>AI + IoT integration</li>
+                        <li>Custom multi-user system</li>
+                        <li>Complete UI/UX design</li>
+                        <li>6-8 week delivery</li>
+                        <li>3 months maintenance</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary">Choose Premium</a>
+                </div>
+            </div>
+
+            <div class="special-offers">
+                <h2>🎁 Special Launch Offers</h2>
+                <div class="offers-grid">
+                    <div class="offer-card">
+                        <h3>Free Small Tasks</h3>
+                        <p>Get 3 small development tasks absolutely free with any paid project</p>
+                    </div>
+                    <div class="offer-card">
+                        <h3>Early Bird Discount</h3>
+                        <p>15% discount for our first 10 customers - limited time only!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Portfolio</h2>
+                <p class="page-intro">Explore some of our recent projects across different domains</p>
+            </div>
+
+            <div class="portfolio-grid">
+                <!-- Project 1 -->
+                <div class="portfolio-item">
+                    <div class="project-image">Smart Home App</div>
+                    <div class="portfolio-content">
+                        <h3>Smart Home Control App</h3>
+                        <p>IoT-based mobile application for controlling home appliances remotely with voice commands and
+                            scheduling features.</p>
+                        <div class="tech-tags">
+                            <span>React Native</span>
+                            <span>Firebase</span>
+                            <span>IoT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="portfolio-item">
+                    <div class="project-image">TV Remote App</div>
+                    <div class="portfolio-content">
+                        <h3>Universal TV Remote</h3>
+                        <p>Mobile application that turns your smartphone into a universal remote for multiple TV brands
+                            with custom macros.</p>
+                        <div class="tech-tags">
+                            <span>Android</span>
+                            <span>IR Technology</span>
+                            <span>UI/UX</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="portfolio-item">
+                    <div class="project-image">Radar System</div>
+                    <div class="portfolio-content">
+                        <h3>Radar Tracking System</h3>
+                        <p>Real-time object tracking and monitoring system with web dashboard and mobile alerts.</p>
+                        <div class="tech-tags">
+                            <span>Python</span>
+                            <span>WebSockets</span>
+                            <span>Dashboard</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#contact" class="btn btn-primary">View More Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+            </div>
+
+            <div class="mission-vision">
+                <div class="mission">
+                    <h3>Our Mission</h3>
+                    <p>To deliver simple, affordable, and high-quality software solutions that empower businesses of all
+                        sizes to thrive in the digital age.</p>
+                </div>
+                <div class="vision">
+                    <h3>Our Vision</h3>
+                    <p>To build India's fastest-growing technology startup, recognized for innovation, reliability, and
+                        exceptional client success.</p>
+                </div>
+            </div>
+
+            <div class="founder-section">
+                <h3>Meet Our Founder</h3>
+                <div class="founder-profile">
+                    <div class="founder-image">Founder Photo</div>
+                    <div class="founder-info">
+                        <h4>Mohammad Ubaid Shekh</h4>
+                        <p class="title">Founder & Lead Developer</p>
+                        <p>With a passion for technology and innovation, Ubaid founded UbaidSoft Technologies to bridge
+                            the gap between complex software solutions and businesses that need them. His expertise
+                            spans across modern development frameworks and emerging technologies.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="expertise">
+                <h3>Our Technical Expertise</h3>
+                <div class="expertise-grid">
+                    <div class="expertise-item">
+                        <h4>React Native</h4>
+                        <p>Cross-platform mobile applications with native performance</p>
+                    </div>
+                    <div class="expertise-item">
+                        <h4>IoT & Firebase</h4>
+                        <p>Connected devices with real-time cloud synchronization</p>
+                    </div>
+                    <div class="expertise-item">
+                        <h4>AI Assistants</h4>
+                        <p>Intelligent chatbots and voice-controlled applications</p>
+                    </div>
+                    <div class="expertise-item">
+                        <h4>App Automation</h4>
+                        <p>Automating repetitive tasks to boost productivity</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Client Testimonials</h2>
+                <p class="page-intro">Don't just take our word for it - hear from businesses we've helped transform</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card card">
+                    <div class="stars">★★★★★</div>
+                    <p>"UbaidSoft delivered our mobile app ahead of schedule and under budget. The quality exceeded our
+                        expectations, and their communication was excellent throughout the project."</p>
+                    <div class="client">
+                        <strong>Rajesh Kumar</strong>
+                        <span>Startup Founder, TechInnovate</span>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card card">
+                    <div class="stars">★★★★★</div>
+                    <p>"The IoT system they built for our smart office has improved our energy efficiency by 30%. Their
+                        technical expertise in ESP32 and Firebase integration was impressive."</p>
+                    <div class="client">
+                        <strong>Priya Sharma</strong>
+                        <span>Operations Manager, GreenSpace Offices</span>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card card">
+                    <div class="stars">★★★★★</div>
+                    <p>"We needed a complex dashboard for our analytics platform. UbaidSoft not only delivered a
+                        beautiful UI but also optimized the performance significantly. Highly recommended!"</p>
+                    <div class="client">
+                        <strong>Amit Patel</strong>
+                        <span>CTO, DataInsights Inc.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p class="page-intro">Get in touch to discuss your project or request a free consultation</p>
+            </div>
+
+            <div class="contact-container">
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="project">Project Type</label>
+                            <select id="project" required>
+                                <option value="">Select your project type</option>
+                                <option value="mobile">Mobile App</option>
+                                <option value="web">Website</option>
+                                <option value="ai">AI Solution</option>
+                                <option value="iot">IoT System</option>
+                                <option value="custom">Custom Project</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Project Details</label>
+                            <textarea id="message"
+                                placeholder="Tell us about your project requirements, timeline, and budget..."
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <h3>Other Ways to Reach Us</h3>
+
+                    <div class="contact-method">
+                        <div class="icon">📱</div>
+                        <div>
+                            <strong>WhatsApp</strong>
+                            <p>+91 XXXXX XXXXX</p>
+                            <button class="btn btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i> Message on WhatsApp
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="icon">📧</div>
+                        <div>
+                            <strong>Email</strong>
+                            <p>contact@ubaidsoft.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="icon">📍</div>
+                        <div>
+                            <strong>Location</strong>
+                            <p>Based in Delhi, India<br>Working with clients worldwide</p>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <h4>Follow Us</h4>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>UbaidSoft Technologies</h3>
+                    <p>Transforming ideas into digital solutions through innovative software development.</p>
+                    <div class="footer-contact">
+                        <p>📍 Delhi, India</p>
+                        <p>📧 contact@ubaidsoft.com</p>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Mobile App Development</a></li>
+                        <li><a href="#services">Web Development</a></li>
+                        <li><a href="#services">AI & Automation</a></li>
+                        <li><a href="#services">IoT Solutions</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2023 UbaidSoft Technologies. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenu').addEventListener('click', function () {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu if open
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+
+        // WhatsApp Button
+        document.querySelector('.btn-whatsapp').addEventListener('click', function () {
+            const phoneNumber = '919999999999'; // Replace with actual number
+            const message = 'Hello, I would like to discuss a project with UbaidSoft Technologies.';
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        });
+    </script>
+</body>
+
+</html>
